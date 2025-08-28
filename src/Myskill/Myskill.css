@@ -5,8 +5,11 @@
     gap: 80px;
     margin: 80px 170px;
     min-height: 100vh;
-    background-color: white;
+    background-color: rgb(194, 176, 176);
     padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
 .myskill-title{
@@ -16,6 +19,7 @@
     padding: 0px 30px;
     font-size: 80px;
     font-weight: 600;
+    animation: fadeInUp 1s ease-out 0.5s both;
 }
 .myskill-title img{
     position: absolute;
@@ -42,13 +46,14 @@
    font-family: 'Poppins', sans-serif;
    line-height:1.4;
   margin-bottom: 4rem;
+  animation: slideInRight 1s ease-out 0.7s both;
 }
 .myskill-skills{
    display: flex;
    flex-direction: column;
    gap: 20px;
    justify-content: center;
-
+   animation: slideInRight 1s ease-out 1s both;
 }
 .myskill-skill{
     display: flex;
@@ -64,10 +69,21 @@
 .about-skill hr{
     outline: none;
     border: none;
-    width:50%;
+    width: 0%;
     height:8px;
     border-radius: 50px;
     background: linear-gradient(264deg,#DF8908 -5.09%,#B415FF 103.61%);
+    transition: width 0.3s ease-in-out;
+    animation: fillBar 2s ease-in-out forwards;
+}
+
+@keyframes fillBar {
+    from {
+        width: 0%;
+    }
+    to {
+        width: var(--skill-width);
+    }
 }
 .about-skill:hover{
     transform:scale(1.05);

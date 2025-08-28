@@ -11,6 +11,147 @@ html {
 
 body {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Floating Animation Keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+@keyframes float3 {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-25px) scale(1.05);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.6);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.floating-icon {
+  position: absolute;
+  font-size: 24px;
+  color: rgba(254, 252, 252, 0.3);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-icon:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-icon:nth-child(2) {
+  top: 60%;
+  right: 15%;
+  animation: float2 8s ease-in-out infinite;
+}
+
+.floating-icon:nth-child(3) {
+  top: 80%;
+  left: 20%;
+  animation: float3 7s ease-in-out infinite;
+}
+
+.floating-icon:nth-child(4) {
+  top: 30%;
+  right: 25%;
+  animation: float 9s ease-in-out infinite;
+}
+
+.floating-icon:nth-child(5) {
+  top: 70%;
+  left: 5%;
+  animation: float2 5s ease-in-out infinite;
 }
 
 header{
@@ -24,26 +165,32 @@ header{
   justify-content: space-between;
   align-items: center;
   z-index: 100;
+  animation: slideInLeft 1s ease-out;
 }
+
 .home-content h1{
   font-family: Arial, sans-serif;
   font-size: 30px;
   font-weight: 700;
   color: rgb(0, 0, 0);
+  animation: fadeInUp 1s ease-out 0.5s both;
 }
+
 .home-content h3{
   font-family: Arial, sans-serif;
   font-size: 25px;
   font-weight: 600;
   color: rgb(0, 0, 0);
+  animation: fadeInUp 1s ease-out 0.7s both;
 }
+
 .home-content span{
   font-family: Arial, sans-serif;
   font-size: 30px;
   font-weight: 600;
   color: rgb(255, 0, 0);
+  animation: glow 3s ease-in-out infinite;
 }
-
 
 header .logo{
     color: rgb(255, 255, 255);
@@ -52,32 +199,65 @@ header .logo{
     text-decoration: none;
     font-weight: 600;
     transition: 0.3s;
+    animation: pulse 3s ease-in-out infinite;
 }
+
 header-navbar{
   display: flex;
   color: rgb(0, 0, 0);
 
 }
+
 nav a{
   color: #f0efef;
   text-decoration: none;
   transition: 0.3s;
   margin-left: 35px;
+  position: relative;
+  animation: fadeInUp 1s ease-out 1s both;
 }
+
 nav a:hover{
-  color: hsl(0, 72%, 37%)
+  color: hsl(0, 72%, 37%);
+  transform: translateY(-3px);
 }
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: hsl(0, 72%, 37%);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
 header .logo:hover{
- color: hsl(0, 72%, 37%)
+ color: hsl(0, 72%, 37%);
+ transform: scale(1.1);
 }
 
 .home-content{
+  width: 100%;
   max-width: 600px;
-
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+  text-align: center;
+  margin: 0 auto;
+  background: none;
+  box-sizing: border-box;
 }
+
 .home-sci{
   flex-direction: column;
 }
+
 .home-sci a{
   display: inline-flex;
   justify-content: center;
@@ -92,33 +272,74 @@ header .logo:hover{
   box-shadow: 5px 2px;
   text-decoration: none;
   margin: 30px 15px 30px 0;
-}
-.home{
-  background-color: white; 
+  transition: all 0.3s ease;
+  animation: float 4s ease-in-out infinite;
   position: relative;
+}
+
+.home-sci a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 0, 0, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.home-sci a:hover::before {
   width: 100%;
-  justify-content: space-between;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
+  height: 100%;
+}
+
+.home-sci a:nth-child(1) { animation-delay: 0s; }
+.home-sci a:nth-child(2) { animation-delay: 0.5s; }
+.home-sci a:nth-child(3) { animation-delay: 1s; }
+
+.home-sci a:hover{
+  transform: translateY(-10px) scale(1.2);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.home{
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 70px 10% 0;
+  position: relative;
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
-.btn-box{
+
+.btn-box {
   display: inline-block;
   padding: 12px 28px;
-  background:black ;
+  background: black;
   border-radius: 40px;
   font-size: 16px;
   color: rgb(255, 255, 255);
   text-decoration: none;
   letter-spacing: 1px;
+  transition: all 0.3s ease;
+  animation: fadeInUp 1s ease-out 1.2s both;
+  margin-top: 1rem;
+  box-sizing: border-box;
+  max-width: 100%;
+  word-break: break-word;
 }
+
 .btn-box:hover{
   box-shadow: 0 0 5px rgb(228, 107, 107),
-  0 0 25px rgb(228, 107, 107),0 0 50px rgb(228, 107, 107),0 0 100px rgb(228, 107, 107)
+  0 0 25px rgb(228, 107, 107),0 0 50px rgb(228, 107, 107),0 0 100px rgb(228, 107, 107);
+  transform: translateY(-5px) scale(1.05);
+  animation: bounce 0.6s ease-in-out;
 }
+
 .home-sci a{
   display: inline-flex;
   justify-content: center;
@@ -131,61 +352,87 @@ header .logo:hover{
   margin: 30px 15px 30px 0;
 
 }
+
 .home-sci a:hover{
   background-color: rgb(164, 153, 153);
   color:rgb(125, 0, 0);
   box-shadow: 30px;
 }
+
 .about{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: start;
   gap: 1.5rem;
-  background-color: hsl(0, 20%, 94%);
+  background-color: hsl(0, 0%, 100%);
   min-height: 100vh;
   padding: 70px 10% 0;
   overflow-y: auto;
+  position: relative;
+  overflow: hidden;
 }
+
 .about-txt h4{
   font-size: 25px;
   font-weight: 600;
   color: rgb(0, 0, 0);
   line-height: 1.0;
   margin: 15px 0 20px;
+  animation: slideInRight 1s ease-out 0.5s both;
 }
+
 .about-txt p{
   font-size: 18px;
   color: rgb(0, 0, 0);
   line-height:1.4;
   margin-bottom: 2rem;
   max-width: 100%;
+  animation: slideInRight 1s ease-out 0.7s both;
 }
+
 .about h2{
   font-size: 35px;
   font-weight: 600;
   color: rgb(0, 0, 0);
   margin: 15px 0 30px;
+  animation: slideInRight 1s ease-out 0.3s both;
 }
+
 .about h2 span{
   color: rgb(255, 0, 0);
+  animation: glow 3s ease-in-out infinite;
+}
+
+.aboutimage{
+  max-width: 95%;
+  max-height: 100%;
+  height: auto;
+  object-fit: cover;
+  animation: slideInLeft 1s ease-out 0.5s both;
+  transition: transform 0.3s ease;
+}
+
+.aboutimage:hover {
+  transform: scale(1.05);
 }
 
 .about-img {
-  display: flex;
+  display: flex;    
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100%;
 }
+
 h1 span{
   color: rgb(255, 0, 0);
 }
+
 .heading{
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px 0;
 }
-
 
 .page-transition {
   min-height: 100vh;
@@ -199,19 +446,21 @@ h1 span{
   transform: translateY(0);
 }
 
-
 .contact {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(194, 176, 176);
+  background-color: rgb(255, 255, 255);
   padding: 70px 10% 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .contact-content {
   text-align: center;
   max-width: 800px;
+  animation: fadeInUp 1s ease-out 0.5s both;
 }
 
 .contact-content h2 {
@@ -223,6 +472,7 @@ h1 span{
 
 .contact-content h2 span {
   color: rgb(255, 0, 0);
+  animation: glow 3s ease-in-out infinite;
 }
 
 .contact-content p {
@@ -230,6 +480,85 @@ h1 span{
   color: rgb(0, 0, 0);
   line-height: 1.6;
 }
+
+.light-rays-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+/* Responsive design for about section */
+@media (max-width: 1200px) {
+  .aboutimage {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 992px) {
+  .about {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about-img {
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .aboutimage {
+    max-width: 80%;
+  }
+  .home-content {
+    max-width: 90vw;
+    padding: 1.5rem;
+  }
+  .floating-icon {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutimage {
+    max-width: 85%;
+  }
+  .home {
+    padding: 1rem 0.5rem;
+  }
+  .home-content {
+    padding: 1rem;
+    max-width: 98vw;
+  }
+  .floating-icon {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutimage {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutimage {
+    max-width: 95%;
+  }
+  .home-content h1 {
+    font-size: 1.5rem;
+  }
+  .home-content h3 {
+    font-size: 1rem;
+  }
+  .home-content p {
+    font-size: 0.95rem;
+  }
+  .floating-icon {
+    font-size: 1rem;
+  }
+}
+
+
 
 
 

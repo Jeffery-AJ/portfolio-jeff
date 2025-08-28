@@ -1,10 +1,16 @@
-
-import blueimage from "./assets/blueimage.jpg";
+import aboutimage from "./assets/aboutimage.jpg";
 export default function Aboutpage(){
       return(  
         <section className="about" id="about">
+          {/* Floating Icons */}
+          <div className="floating-icon">👨‍💻</div>
+          <div className="floating-icon">🎨</div>
+          <div className="floating-icon">🔧</div>
+          <div className="floating-icon">📚</div>
+          <div className="floating-icon">🌟</div>
+          
           <div className="about-img">
-          <img className="aboutimage"src=""alt="blueimage"/>
+          <img className="aboutimage"src={aboutimage} alt="blueimage"/>
           </div>
           <div className="about-txt">
             <h2>About <span>Me</span></h2>

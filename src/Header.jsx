@@ -43,7 +43,8 @@ export default function Header() {
                 <a href="#home" style={{ "--i": 1 }} className="active">Home</a>
                 <a href="#about" style={{ "--i": 2 }}>About</a>
                 <a href="#skill" style={{ "--i": 3 }}>Skill</a>
-                <a href="#contact" style={{ "--i": 4 }}>Contact</a>
+                <a href="#projects" style={{ "--i": 4 }}>My Projects</a>
+                <a href="#contact" style={{ "--i": 5 }}>Contact</a>
             </nav>
         </header>
     );
